@@ -11,12 +11,12 @@ var browserSync   = require('browser-sync').create();
 var rename        = require('gulp-rename');
 var templateCache = require('gulp-angular-templatecache');
 var uglify        = require('gulp-uglify');
-var merge         = require('merge-stream');
-var Server        = require('karma').Server;
+// var merge         = require('merge-stream');
+// var Server        = require('karma').Server;
 
-var jsFiles   = 'src/js/**/*.js';
-var viewFiles = 'src/js/**/*.html';
-var scssFiles = 'src/scss/**/*.scss';
+var jsFiles   = 'src/legacy/src/js/**/*.js';
+var viewFiles = 'src/legacy/src/js/**/*.html';
+var scssFiles = 'src/legacy/src/scss/**/*.scss';
 
 var interceptErrors = function(error) {
   var args = Array.prototype.slice.call(arguments);
@@ -32,7 +32,7 @@ var interceptErrors = function(error) {
 };
 
 gulp.task('browserify', ['views'], function() {
-  return browserify('./src/js/app.js')
+  return browserify('./src/legacy/src/js/app.js')
       .transform(babelify, { presets: ['env'] })
       .transform(ngAnnotate)
       .bundle()
@@ -97,12 +97,12 @@ gulp.task('build', ['images', 'sass', 'html', 'browserify'], function() {
   });
 });
 
-gulp.task('test', function (done) {
-  new Server({
-    configFile: __dirname + '/karma.conf.js',
-    singleRun: false
-  }, done).start();
-});
+// gulp.task('test', function (done) {
+//   new Server({
+//     configFile: __dirname + '/karma.conf.js',
+//     singleRun: false
+//   }, done).start();
+// });
 
 gulp.task('default', ['images', 'sass', 'html', 'browserify'], function() {
 
