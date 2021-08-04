@@ -27,6 +27,13 @@
     ]
   },
   "projects": {
+    "weather-angular-js": {
+      "tags": []
+    },
+    "weather-angular-js-e2e": {
+      "tags": [],
+      "implicitDependencies": ["weather-angular-js"]
+    },
     "weather-explorer": {
       "tags": []
     },
