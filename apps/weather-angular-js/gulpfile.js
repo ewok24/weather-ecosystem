@@ -11,6 +11,7 @@ var browserSync = require('browser-sync').create();
 var rename = require('gulp-rename');
 var templateCache = require('gulp-angular-templatecache');
 var uglify = require('gulp-uglify');
+var replace = require('gulp-replace');
 // var merge         = require('merge-stream');
 // var Server        = require('karma').Server;
 
@@ -22,11 +23,13 @@ var entry = {
   images: './src/legacy/src/images/**/*.+(png|jpg|gif|svg)',
   js: './src/legacy/src/js/app.js',
   index: './src/legacy/src/index.html',
+  nodeModules: './../../node_modules',
 };
 var output = {
-  dist: './../../dist/apps/weather-angular-js',
-  build: './../../dist/apps/weather-angular-js/build/'
-}
+  dist: './../../dist/apps/weather-angular-js/dist',
+  config: './src/legacy/src/js/config/',
+  build: './../../dist/apps/weather-angular-js/build',
+};
 
 var interceptErrors = function (error) {
   var args = Array.prototype.slice.call(arguments);
@@ -52,9 +55,10 @@ gulp.task('views', function () {
         standalone: true,
       })
     )
+    .pipe(replace('put("/', 'put("'))
     .on('error', interceptErrors)
     .pipe(rename('app.templates.js'))
-    .pipe(gulp.dest('./src/js/config/'));
+    .pipe(gulp.dest(output.config));
 });
 
 gulp.task(
@@ -66,7 +70,7 @@ gulp.task(
       .bundle()
       .on('error', interceptErrors)
       .pipe(source('main.js'))
-      .pipe(gulp.dest('./build/'));
+      .pipe(gulp.dest(`${output.build}/`));
   })
 );
 
@@ -74,7 +78,7 @@ gulp.task('html', function () {
   return gulp
     .src(entry.index)
     .on('error', interceptErrors)
-    .pipe(gulp.dest('./build/'));
+    .pipe(gulp.dest(`${output.build}/`));
 });
 
 gulp.task('sass', function () {
@@ -82,18 +86,18 @@ gulp.task('sass', function () {
     .src(scssFiles)
     .pipe(
       sass({
-        includePaths: ['node_modules/angular-material'],
+        includePaths: [`${entry.nodeModules}/angular-material`],
       })
     )
     .pipe(cleanCSS())
-    .pipe(gulp.dest('./build'));
+    .pipe(gulp.dest(`${output.build}`));
 });
 
 gulp.task('images', function () {
   return gulp
     .src(entry.images)
     .pipe(imagemin())
-    .pipe(gulp.dest('./build/images'));
+    .pipe(gulp.dest(`${output.build}/images`));
 });
 
 gulp.task(
@@ -130,8 +134,8 @@ gulp.task(
 gulp.task(
   'default',
   gulp.series('images', 'sass', 'html', 'browserify', function () {
-    browserSync.init(['./build/**/**.**'], {
-      server: './build',
+    browserSync.init([`${output.build}/**/**.**`], {
+      server: output.build,
       port: 4000,
       notify: false,
       ui: {
