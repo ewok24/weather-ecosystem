@@ -1,0 +1,17 @@
+<div ng-if="!vm.isLoading" 
+    layout="row" style="overflow-x: auto;">
+    <div ng-repeat="forecast in vm.currentForecast | limitTo : 6">
+        <weather-sm day="{{ forecast.day }}"
+                    date="{{ forecast.date.substr(0, 2) }}"
+                    icon="{{ forecast.icon }}"
+                    high="{{ forecast.high }}"
+                    low="{{ forecast.low }}"
+                    condition="{{ forecast.text }}">
+        </weather-sm>
+    </div>
+</div>
+<div ng-if="vm.isLoading" 
+    layout="row" layout-padding>
+    <md-progress-circular md-mode="indeterminate"
+        md-diameter="24"></md-progress-circular>
+</div>

@@ -1,0 +1,34 @@
+<div ng-if="vm.city && vm.country"
+    layout="column" layout-align="center center">
+    <div layout="row">
+        <h1 class="md-headline">
+            {{ vm.city }}, {{ vm.country }}
+        </h1>
+    </div>
+    <div layout="row">
+        <md-icon md-svg-icon="{{ vm.icon }}" alt="current_weather"
+                    style="height: 96px; width: 96px; color: white;"></md-icon>
+        <h1 class="md-display-4" style="margin: 0;">
+            {{ vm.temp }}°{{ vm.unit }}
+        </h1>
+    </div>
+    <div layout="row">
+        <h1 class="md-headline">
+            {{ vm.condition }}
+        </h1>
+    </div>
+    <div layout="row">
+        <h1 class="md-title" style="margin: 0;">
+            {{ vm.date }}
+        </h1>
+    </div>
+</div>
+<div ng-if="!vm.city && !vm.country"
+    layout="column" layout-align="center center"
+    style="min-height: 266px;">
+    <div layout="row">
+        <h1 class="md-headline">
+            The Weather Today
+        </h1>
+    </div>
+</div>

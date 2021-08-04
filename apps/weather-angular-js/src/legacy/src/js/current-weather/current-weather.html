@@ -1,0 +1,15 @@
+<weather-lg ng-if="!vm.isLoading"
+    city="{{ vm.currentWeather.city }}"
+    country="{{ vm.currentWeather.country }}"
+    icon="{{ vm.currentWeather.icon }}"
+    temp="{{ vm.currentWeather.temp }}"
+    unit="{{ vm.currentWeather.tempUnit }}"
+    condition="{{ vm.currentWeather.condition }}"
+    date="{{ vm.currentWeather.date }}">
+</weather-lg>
+<div ng-if="vm.isLoading" 
+    layout="row" layout-align="center center"
+    style="min-height: 266px;">
+    <md-progress-circular md-mode="indeterminate"
+        md-diameter="96"></md-progress-circular>
+</div>

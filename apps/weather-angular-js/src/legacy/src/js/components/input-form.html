@@ -1,0 +1,18 @@
+<form name="weatherForm" layout="row" layout-padding style="max-width: 600px;">
+    <md-input-container md-no-float class="md-block" flex
+                        style="margin-bottom:0; padding-bottom: 0; padding-right: 36px;">
+        <input name="search"
+                ng-model="vm.search"
+                type="text"
+                placeholder="{{ vm.placeholder }}">
+    </md-input-container>
+    <md-button ng-click="vm.runSearch({ search: vm.search })" aria-label="search_submit" 
+                class="md-fab" style="margin-top:auto; margin-bottom: auto;" show-xs hide-gt-xs>
+        <md-icon md-svg-icon="search"></md-icon>
+    </md-button>
+    <md-button ng-click="vm.submitFn({ search: vm.search })" type="submit" aria-label="search_submit" 
+                class="md-raised md-accent" style="margin-top:auto; margin-bottom: auto;" show-gt-xs hide-xs>
+        <md-icon md-svg-icon="search"></md-icon>
+        {{ vm.searchText }}
+    </md-button>
+</form>
