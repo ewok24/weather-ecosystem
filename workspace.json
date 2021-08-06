@@ -253,6 +253,29 @@
           }
         }
       }
+    },
+    "weather-express-api-weather": {
+      "root": "libs/weather-express-api/weather",
+      "sourceRoot": "libs/weather-express-api/weather/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/weather-express-api/weather/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/weather-express-api/weather"],
+          "options": {
+            "jestConfig": "libs/weather-express-api/weather/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

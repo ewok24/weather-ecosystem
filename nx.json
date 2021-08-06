@@ -49,6 +49,9 @@
     },
     "weather-express-api": {
       "tags": []
+    },
+    "weather-express-api-weather": {
+      "tags": []
     }
   }
 }

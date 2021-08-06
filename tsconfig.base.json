@@ -17,6 +17,9 @@
     "paths": {
       "@weather-ecosystem/weather-explorer/feature-shell": [
         "libs/weather-explorer/feature-shell/src/index.ts"
+      ],
+      "@weather-ecosystem/weather-express-api/weather": [
+        "libs/weather-express-api/weather/src/index.ts"
       ]
     }
   },
