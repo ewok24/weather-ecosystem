@@ -1,20 +1,35 @@
-import styled from 'styled-components';
+import * as React from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-/* eslint-disable-next-line */
-export interface WeatherExplorerFeatureShellProps {}
-
-const StyledWeatherExplorerFeatureShell = styled.div`
-  color: pink;
-`;
-
-export function WeatherExplorerFeatureShell(
-  props: WeatherExplorerFeatureShellProps
-) {
+export function WeatherExplorerFeatureShell() {
   return (
-    <StyledWeatherExplorerFeatureShell>
-      <h1>Welcome to WeatherExplorerFeatureShell!</h1>
-    </StyledWeatherExplorerFeatureShell>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/react-query">About</Link>
+            </li>
+            <li>
+              <Link to="/swr">Users</Link>
+            </li>
+          </ul>
+        </nav>
+        <Switch>
+          <Route path="/react-query">{/* <About /> */}</Route>
+          <Route path="/swr">{/* <Users /> */}</Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
-export default WeatherExplorerFeatureShell;
+function Home() {
+  return <h2>Welcome to the Weather Explorer App</h2>;
+}

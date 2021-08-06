@@ -1,1 +1,1 @@
-export * from './lib/weather-express-api-routes-weather';
+export { addWeatherRoutes } from './lib/weather-express-api-routes-weather';
