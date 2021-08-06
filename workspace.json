@@ -187,16 +187,24 @@
   "generators": {
     "@nrwl/react": {
       "application": {
-        "style": "styled-components",
+        "babel": true,
+        "e2eTestRunner": "none",
+        "globalCss": false,
+        "js": false,
         "linter": "eslint",
-        "babel": true
+        "routing": false,
+        "style": "styled-components"
       },
       "component": {
         "style": "styled-components"
       },
       "library": {
+        "globalCss": false,
+        "js": false,
+        "linter": "eslint",
+        "routing": false,
         "style": "styled-components",
-        "linter": "eslint"
+        "unitTestRunner": "jest"
       }
     },
     "@nrwl/angular:application": {
