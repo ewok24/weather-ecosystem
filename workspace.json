@@ -181,6 +181,29 @@
         }
       }
     },
+    "weather-explorer-feature-shell": {
+      "root": "libs/weather-explorer/feature-shell",
+      "sourceRoot": "libs/weather-explorer/feature-shell/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/weather-explorer/feature-shell/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/weather-explorer/feature-shell"],
+          "options": {
+            "jestConfig": "libs/weather-explorer/feature-shell/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "weather-express-api": {
       "root": "apps/weather-express-api",
       "sourceRoot": "apps/weather-express-api/src",
