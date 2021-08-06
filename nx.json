@@ -14,12 +14,7 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ],
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
         "accessToken": "ZmM3NDAxYWUtOTU1Ni00YTA2LTgxMzMtNDFhZTgxNWRlZTE4fHJlYWQtd3JpdGU=",
         "canTrackAnalytics": false,
         "showUsageWarnings": true
@@ -40,18 +35,17 @@
     },
     "weather-angular-js-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "weather-angular-js"
-      ]
+      "implicitDependencies": ["weather-angular-js"]
     },
     "weather-explorer": {
       "tags": []
     },
     "weather-explorer-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "weather-explorer"
-      ]
+      "implicitDependencies": ["weather-explorer"]
+    },
+    "weather-express-api": {
+      "tags": []
     }
   }
 }
