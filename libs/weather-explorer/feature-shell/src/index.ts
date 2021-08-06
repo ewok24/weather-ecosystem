@@ -1,1 +1,1 @@
-export * from './lib/weather-explorer-feature-shell';
+export { WeatherExplorerFeatureShell } from './lib/weather-explorer-feature-shell';
