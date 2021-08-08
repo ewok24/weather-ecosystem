@@ -1,10 +1,51 @@
 import { Express } from 'express';
 
-interface Todo {
-  title: string;
+interface City {
+  name: string;
+  coord: {
+    lon: number;
+    lat: number;
+  };
 }
 
-const todos: Todo[] = [{ title: 'Todo 1' }, { title: 'Todo 2' }];
+const cities: City[] = [
+  {
+    name: 'Sydney',
+    coord: {
+      lon: -122.08,
+      lat: 37.39,
+    },
+  },
+  {
+    name: 'Melbourne',
+    coord: {
+      lon: -122.08,
+      lat: 37.39,
+    },
+  },
+  {
+    name: 'Houston',
+    coord: {
+      lon: -122.08,
+      lat: 37.39,
+    },
+  },
+  {
+    name: 'New York',
+    coord: {
+      lon: -122.08,
+      lat: 37.39,
+    },
+  },
+  {
+    name: 'Vancouver',
+    coord: {
+      lon: -122.08,
+      lat: 37.39,
+    },
+  },
+];
+
 const currentWeather = {
   Sydney: {},
   default: {
@@ -54,8 +95,16 @@ const currentWeather = {
 };
 
 export function addWeatherRoutes(app: Express) {
-  app.get('/api/weather:', (req, resp) => {
+  app.use('/api/weather', (req, res, next) => {
+    setTimeout(next, 2000);
+  });
+  app.get('/api/weather', (req, resp) => {
     const { q, lat, long } = req.query;
-    resp.send(currentWeather[q as string] ?? currentWeather['default']);
+    const response = currentWeather[q as string] ?? currentWeather['default'];
+    return resp.send(response);
+  });
+  app.get('/api/cities', (req, resp) => {
+    const response = cities;
+    return resp.send(response);
   });
 }

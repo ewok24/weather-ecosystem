@@ -8,7 +8,8 @@ import { addWeatherRoutes } from '@weather-ecosystem/weather-express-api/routes-
 const app = express();
 
 app.get('*', (req, res) => {
-  console.log(`GET ${req.url}?${JSON.stringify(req.query)}`);
+  console.log(`GET ${req.url}`);
+  return req.next();
 });
 app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to weather-express-api!' });
